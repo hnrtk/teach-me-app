@@ -9,11 +9,13 @@ const color = {
 
 module.exports = {
   purge: ["./src/**/*.{vue,js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     color: color,
     textColor: (theme) => theme("color"),
     backgroundColor: (theme) => theme("color"),
+    borderColor: (theme) => theme("color"),
+    ringColor: (theme) => theme("color"),
     extend: {
       fontFamily: {
         sans: "Lato, sans-serif",
