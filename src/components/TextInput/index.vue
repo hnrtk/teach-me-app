@@ -1,11 +1,10 @@
-/* eslint-disable vue/no-mutating-props */
 <template>
-  <div class="block p-1">
-    <label class="block mb-1 text-primary font-medium" id="name">{{
+  <div class="flex flex-col p-2">
+    <label class="block mb-1 text-primary font-medium subpixel-antialiased">{{
       label
     }}</label>
     <input
-      class="bg-gray-100 rounded-lg py-3 px-2 h-10 outline-nonefocus:ring-2 focus:ring-primary"
+      class="bg-gray-200 rounded-lg py-3 px-2 h-10 outline-none focus:ring-2 focus:ring-primary"
       type="text"
       v-model="inputValue"
     />
@@ -27,7 +26,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const inputValue = computed({
       get: () => props.modelValue,
-      set: (value) => emit("update:modelValue", value?.toString()),
+      set: (value) => emit("update:modelValue", value),
     });
 
     return { inputValue };

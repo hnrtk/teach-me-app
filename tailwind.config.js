@@ -3,7 +3,11 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 const color = {
   ...defaultTheme.colors,
-  primary: "#7E18EC",
+  primary: {
+    DEFAULT: "#7E18EC",
+    dark: "#5A10AC",
+    light: "#8E22FC",
+  },
   secondary: "#F5EE08",
 };
 
