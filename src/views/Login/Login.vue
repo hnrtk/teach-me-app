@@ -1,6 +1,9 @@
 <template>
-  <div class="flex justify-center items-center w-screen h-screen bg-primary">
-    <form @submit.prevent="onsubmit">
+  <top-wave />
+  <div
+    class="flex justify-center items-center w-screen h-screen bg-primary-light"
+  >
+    <form @submit.prevent="onSubmit">
       <div
         class="flex flex-col bg-white p-6 w-screen h-screen justify-center md:w-96 md:h-full md:rounded-lg"
       >
@@ -19,25 +22,31 @@
       </div>
     </form>
   </div>
+  <bottom-wave />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import { TextInput, SubmitButton } from "@/components";
+import { defineComponent, reactive, toRefs } from "vue";
+import { TextInput, SubmitButton, TopWave, BottomWave } from "@/components";
+import { signIn } from "@/api/auth.api";
 
 export default defineComponent({
   name: "Login",
   components: {
     TextInput,
     SubmitButton,
+    TopWave,
+    BottomWave,
   },
   setup() {
-    const email = ref<string>();
-    const password = ref<string>();
+    const formValues = reactive({
+      email: "",
+      password: "",
+    });
 
-    const onsubmit = () => console.log(email.value, password.value);
+    const onSubmit = async () => await signIn(formValues);
 
-    return { email, password, onsubmit };
+    return { ...toRefs(formValues), onSubmit };
   },
 });
 </script>

@@ -26,7 +26,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const inputValue = computed({
       get: () => props.modelValue,
-      set: (value) => emit("update:modelValue", value),
+      set: (value) => emit("update:modelValue", value?.toString()),
     });
 
     return { inputValue };
